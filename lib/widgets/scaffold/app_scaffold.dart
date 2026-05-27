@@ -14,7 +14,7 @@ class AppScaffold extends StatelessWidget {
       children: [
         AnimatedContainer(
           duration: Duration(milliseconds: 500),
-          curve: Curves.easeOutCubic,
+          curve: Curves.easeOutExpo,
           decoration: BoxDecoration(
             color: theme.scaffoldBackgroundColor,
           ),

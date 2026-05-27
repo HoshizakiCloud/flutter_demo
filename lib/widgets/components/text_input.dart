@@ -45,6 +45,7 @@ class _TextInputState extends State<TextInput>
     final theme = AppTheme.of(context);
     final effectiveStyle = widget.textStyle.copyWith(
       color: widget.textStyle.color ?? theme.contentColor,
+      fontFamily: widget.textStyle.fontFamily ?? 'Microsoft Yahei UI'
     );
 
     return _gestureDetectorBuilder.buildGestureDetector(

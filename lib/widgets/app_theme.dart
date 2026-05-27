@@ -15,6 +15,7 @@ class AppThemeData {
   late final Color backgroundColor;
   late final Color scaffoldBackgroundColor;
   late final Color surfaceColor;
+  late final Color surfaceColorEmphasis;
   late final Color surfaceBorderColor;
 
   // ── 毛玻璃颜色 ──
@@ -37,6 +38,7 @@ class AppThemeData {
       backgroundColor = const Color.fromRGBO(24, 24, 24, 1);
       scaffoldBackgroundColor = const Color.fromRGBO(16, 16, 16, 1);
       surfaceColor = const Color.fromRGBO(24, 24, 24, 1);
+      surfaceColorEmphasis = const Color.fromRGBO(40, 40, 40, 1);
       surfaceBorderColor = const Color.fromRGBO(255, 255, 255, 0.10);
       glassColor = const Color.fromRGBO(0, 0, 0, 0.54);
       glassBorderColor = const Color.fromRGBO(255, 255, 255, 0.12);
@@ -50,6 +52,7 @@ class AppThemeData {
       backgroundColor = const Color.fromRGBO(255, 255, 255, 1);
       scaffoldBackgroundColor = const Color.fromRGBO(224, 242, 241, 1);
       surfaceColor = const Color.fromRGBO(255, 255, 255, 1);
+      surfaceColorEmphasis = const Color.fromRGBO(240, 240, 240, 1);
       surfaceBorderColor = const Color.fromRGBO(0, 0, 0, 0.12);
       glassColor = const Color.fromRGBO(255, 255, 255, 0.48);
       glassBorderColor = const Color.fromRGBO(0, 0, 0, 0.10);

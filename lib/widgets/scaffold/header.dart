@@ -92,7 +92,7 @@ class Header extends StatelessWidget {
             ),
             Expanded(
               child: TextInput(
-                textStyle: TextStyle(fontSize: 13, fontFamily: 'Microsoft YaHei UI')
+                textStyle: TextStyle(fontSize: 13)
               ),
             ),
           ],

@@ -5,17 +5,18 @@ class AdaptiveThemedIcon extends StatefulWidget {
   const AdaptiveThemedIcon(this.iconData, {
     super.key,
     this.size,
+    this.color,
   });
   
   final IconData iconData;
   final double? size;
+  final Color? color;
 
   @override
   State<AdaptiveThemedIcon> createState() => _AdaptiveThemedIconState();
 }
 
-class _AdaptiveThemedIconState extends State<AdaptiveThemedIcon>
-    with SingleTickerProviderStateMixin {
+class _AdaptiveThemedIconState extends State<AdaptiveThemedIcon>with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Color?> _colorAnimation;
   Color? _currentColor;
@@ -29,10 +30,10 @@ class _AdaptiveThemedIconState extends State<AdaptiveThemedIcon>
     );
   }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final targetColor = AppTheme.of(context).contentColor;
+  Color _resolveTargetColor() =>
+      widget.color ?? AppTheme.of(context).contentColor;
+
+  void _transitionToColor(Color targetColor) {
     if (_currentColor == null) {
       _currentColor = targetColor;
       _colorAnimation = ColorTween(
@@ -40,7 +41,7 @@ class _AdaptiveThemedIconState extends State<AdaptiveThemedIcon>
         end: targetColor,
       ).animate(CurvedAnimation(
         parent: _controller,
-        curve: Curves.easeOutCubic,
+        curve: Curves.easeOutExpo,
       ));
     } else if (targetColor != _currentColor) {
       final previousColor = _currentColor;
@@ -50,10 +51,24 @@ class _AdaptiveThemedIconState extends State<AdaptiveThemedIcon>
         end: targetColor,
       ).animate(CurvedAnimation(
         parent: _controller,
-        curve: Curves.easeOutCubic,
+        curve: Curves.easeOutExpo,
       ));
       _controller.reset();
       _controller.forward();
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _transitionToColor(_resolveTargetColor());
+  }
+
+  @override
+  void didUpdateWidget(covariant AdaptiveThemedIcon oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.color != oldWidget.color) {
+      _transitionToColor(_resolveTargetColor());
     }
   }
 
